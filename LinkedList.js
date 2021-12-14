@@ -1,3 +1,5 @@
+// A linked list is composed of nodes that store data and a pointer to the next node
+
 class Node {
   constructor(data, next = null) {
     this.data = data;
@@ -7,14 +9,14 @@ class Node {
 
 class LinkedList {
   constructor() {
+    // head is the first node in the linked list
     this.head = null;
     this.size = 0;
   }
 
   // insert first node //
 
-  // new node is new this.head and current this.head
-  // gets pushed to next
+  // set new node to be the head and its `next` will  point to the previous head
   insertFirst(data) {
     this.head = new Node(data, this.head);
     this.size++;
@@ -39,6 +41,8 @@ class LinkedList {
         current = current.next;
       }
 
+      // at this point you will have reached the last node in the LL
+      //set its `next` to point to the node you want to insert
       current.next = node;
       this.size++;
     }
@@ -67,7 +71,7 @@ class LinkedList {
       let current = this.head;
       let nodeBeforeInsertedNode;
 
-      // if index is 0 then insertedNode is new head and existing LL is .next
+      // if index is 0 then insertedNode is new head with `next` pointing to existing LL
       if (index === 0) {
         this.insertFirst(data);
       } else {
