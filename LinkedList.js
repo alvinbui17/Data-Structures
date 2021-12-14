@@ -164,23 +164,25 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList();
-ll.insertFirst(400);
+// TEST OUT NEW LL METHODS //
 
-ll.insertFirst(300);
+// const ll = new LinkedList();
+// ll.insertFirst(400);
 
-ll.insertFirst(200);
+// ll.insertFirst(300);
 
-ll.insertLast(500);
+// ll.insertFirst(200);
 
-ll.insertFirst(100);
+// ll.insertLast(500);
 
-//ll.insertAtIndex(150, -12);
+// ll.insertFirst(100);
 
-ll.removeAtIndex(3);
+// //ll.insertAtIndex(150, -12);
 
-//ll.printListData();
+// ll.removeAtIndex(3);
 
-//ll.clearList();
+// //ll.printListData();
 
-ll.printListData();
+// //ll.clearList();
+
+// ll.printListData();
