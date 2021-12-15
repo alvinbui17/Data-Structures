@@ -4,7 +4,7 @@
 
 class MinHeap {
   constructor() {
-    //intialize array heap and add a dummy element at index 0
+    // initialize array heap and add a dummy element at index 0
     // we want indices to start at 1
     // this makes sense when you consider line 2 above
     this.heap = [null];
@@ -14,6 +14,10 @@ class MinHeap {
   _getMin() {
     // accessing min element at index 1 in heap array
     return this.heap[1];
+  }
+
+  _getMax() {
+    return this.heap[this.heap.length - 1];
   }
 
   _insertNode(node) {
@@ -43,7 +47,6 @@ class MinHeap {
         current = Math.floor(current / 2);
       }
     }
-    // console.log(this.heap);
   }
 
   _remove() {
@@ -78,82 +81,66 @@ class MinHeap {
       let leftChildIndex = current * 2;
       let rightChildIndex = current * 2 + 1;
 
-      // case where left and right children exist and current is greater than
-      // at least one of them
-      while (this.heap[leftChildIndex] && this.heap[rightChildIndex]) {
-        console.log("in the while loop now");
-        if (
-          this.heap[current] > this.heap[leftChildIndex] ||
-          this.heap[current] > this.heap[leftChildIndex]
-        ) {
-          console.log("first if cond satisfied");
-          if (this.heap[leftChildIndex] > this.heap[rightChildIndex]) {
-            [this.heap[current], this.heap[rightChildIndex]] = [
-              this.heap[rightChildIndex],
-              this.heap[current],
-            ];
-            current = rightChildIndex;
-            console.log("if of if/else cond satisfied");
-            console.log(this.heap);
-          } else {
-            [this.heap[current], this.heap[leftChildIndex]] = [
-              this.heap[leftChildIndex],
-              this.heap[current],
-            ];
-            current = leftChildIndex;
-            console.log("else of if/else cond satisfied");
-            console.log(this.heap);
-          }
+      // case where left and right children indices exist (always?) and current is greater than
+      // at least one of them (leftChild)
+      while (
+        this.heap[leftChildIndex] &&
+        this.heap[rightChildIndex] &&
+        (this.heap[current] > this.heap[leftChildIndex] ||
+          this.heap[current] > this.heap[rightChildIndex])
+      ) {
+        console.log("children exist and current is greater than at least one");
+        if (this.heap[leftChildIndex] > this.heap[rightChildIndex]) {
+          [this.heap[current], this.heap[rightChildIndex]] = [
+            this.heap[rightChildIndex],
+            this.heap[current],
+          ];
+          current = rightChildIndex;
+        } else {
+          [this.heap[current], this.heap[leftChildIndex]] = [
+            this.heap[leftChildIndex],
+            this.heap[current],
+          ];
+          current = leftChildIndex;
         }
         leftChildIndex = current * 2;
         rightChildIndex = current * 2 + 1;
       }
-
-      if (
-        this.heap[rightChildIndex] === undefined &&
-        this.heap[leftChildIndex] < this.heap[current]
-      ) {
-        [this.heap[current], this.heap[leftChildIndex]] = [
-          this.heap[leftChildIndex],
-          this.heap[current],
-        ];
-        console.log("no right child and left child less than current");
-        console.log(this.heap);
-      } else if (this.heap.length === 2) {
-        // If there are only two elements in the array,
-        // we directly splice out the first element
-        this.heap.splice(1, 1);
-      } else {
-        return;
-      }
+    } else if (this.heap.length === 2) {
+      // If there are only two elements in the array,
+      // we directly splice out the first element
+      this.heap.splice(1, 1);
+    } else {
+      return;
     }
   }
 }
 
-const minHeap = new MinHeap();
+// const minHeap = new MinHeap();
 
-// minHeap._insertNode(24);
-// minHeap._insertNode(54);
-// minHeap._insertNode(48);
-// minHeap._insertNode(36);
-// minHeap._insertNode(37);
-// minHeap._insertNode(39);
-// minHeap._insertNode(41);
+// minHeap._insertNode(42);
+// minHeap._insertNode(1);
+// minHeap._insertNode(2);
+// minHeap._insertNode(3);
+// minHeap._insertNode(4);
+// minHeap._insertNode(5);
+// minHeap._insertNode(6);
+// minHeap._insertNode(7);
+// minHeap._insertNode(8);
+// minHeap._insertNode(9);
 
-minHeap._insertNode(1);
-minHeap._insertNode(2);
-minHeap._insertNode(3);
-minHeap._insertNode(4);
-minHeap._insertNode(5);
-minHeap._insertNode(6);
-minHeap._insertNode(7);
-minHeap._insertNode(8);
-minHeap._insertNode(9);
-minHeap._insertNode(10);
-minHeap._insertNode(11);
-minHeap._insertNode(12);
-minHeap._insertNode(13);
-minHeap._insertNode(14);
+// minHeap._remove();
+// minHeap._remove();
 
-// breaks with 14 nodes
-minHeap._remove();
+// minHeap._insertNode(10);
+// minHeap._insertNode(11);
+// minHeap._insertNode(12);
+// minHeap._insertNode(13);
+// minHeap._insertNode(14);
+// minHeap._insertNode(14);
+// minHeap._insertNode(14);
+
+// console.log(minHeap);
+
+// console.log(minHeap._getMin());
+// console.log(minHeap._getMax());
