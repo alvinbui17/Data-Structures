@@ -1,0 +1,32 @@
+A graph is a pictorial representation of a set of objects where some pairs of objects are connected by links.
+The interconnected objects are represented by points termed as vertices (nodes), and the links that connect the vertices
+are called edges.
+
+a ---- b
+|      |
+|      |
+c ---- d ---- e
+
+In the above graph,
+
+V = {a, b, c, d, e}
+
+E = {ab, ac, bd, cd, de}
+
+Adjacency Matrix (V x V)
+    - Pros
+        - easy to implement
+        - removing an edge takes O(1) time
+        - queries like whether there is an edge from vertex "u" to vertex "v" are efficient and can be done in O(1)
+    - Cons
+        - consumes more space O(V^2)
+        - adding a vertex takes O(V^2) time
+
+Adjacency List (Array of Lists of Length V)
+    - Pros
+        - saves space: O(|V|+|E|), worst case O(V^2)
+        - adding a vertex is easier
+    - Cons
+        - queries like whether there is an edge from vertex u to vertex v are not efficient and are done in O(V)
+
+

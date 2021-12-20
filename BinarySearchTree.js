@@ -1,33 +1,30 @@
 // BST is ordered, Heap is NOT
-
-const LEFT = 0;
-const RIGHT = 1;
-
 class TreeNode {
   constructor(value) {
     this.value = value;
-    this.children = [];
+    this.left = null;
+    this.right = null;
     this.parent = null;
     this.multiplicity = 0;
   }
 
   _getLeftChild() {
-    return this.children[LEFT];
+    return this.left;
   }
 
   _getRightChild() {
-    return this.children[RIGHT];
+    return this.right;
   }
 
   _setLeftChild(node) {
-    this.child[LEFT] = node;
+    this.left = node;
     if (node) {
       node.parent = this;
     }
   }
 
   _setRightChild(node) {
-    this.child[RIGHT] = node;
+    this.right = node;
     if (node) {
       node.parent = this;
     }
@@ -235,28 +232,29 @@ class BinarySearchTree {
     return visited;
   }
 
-  //   _DFS_PreOrder() {
-  //     let stack = [];
-  //     let visited = [];
-  //     let current = this.root;
+  _DFS_PreOrder_Iterative() {
+    let stack = [];
+    let visited = [];
+    let current = this.root;
 
-  //     stack.push(current);
+    stack.push(current);
 
-  //     while (stack.length) {
-  //       current = stack.pop();
-  //       visited.push(current.value);
+    while (stack.length) {
+      current = stack.pop();
+      visited.push(current.value);
 
-  //       if (current.right) {
-  //         stack.push(current.right);
-  //       }
-  //       if (current.left) {
-  //         stack.push(current.left);
-  //       }
-  //     }
-  //     return visited;
-  //   }
+      if (current.right) {
+        stack.push(current.right);
+      }
+      if (current.left) {
+        stack.push(current.left);
+      }
+    }
+    console.log("ITERATIVE");
+    return visited;
+  }
 
-  _DFS_PreOrder() {
+  _DFS_PreOrder_Recursive() {
     let visited = [];
     let current = this.root;
 
@@ -271,6 +269,7 @@ class BinarySearchTree {
     };
 
     traverse(current);
+    console.log("RECURSIVE");
     return visited;
   }
 
