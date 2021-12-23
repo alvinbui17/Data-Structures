@@ -1,3 +1,4 @@
+// for something to be a tree -  no cycles and no more than 1 reference to a single node
 // BST is ordered, Heap is NOT
 class TreeNode {
   constructor(value) {

@@ -1,0 +1,48 @@
+time complexity is a way of showing how the runtime of a function increases as the size of the input increases
+
+time complexities:
+    - linear time
+    - constant time
+    - quadratic time
+    - ...
+
+In Big O notation (where n is size of input):
+    - linear time = O(n)
+    - constant time = O(1)
+    - quadratic time = O(n^2)
+
+To find Big O notation:
+    - find the fastest growing term
+    - take out the coefficient
+    - ie. 
+        - Time = an+b --> an --> n --> O(n)
+
+Determine time complexity/Big O of following functions:
+
+def find_sum(given_array) {
+    total = 0 // O(1) //
+    for each i in given_array { // O(1)
+        total += i // O(1)
+    }
+    return total // O(1) // 
+}
+
+T = O(1) + n * O(1) + O(1)
+T = c1 + n * c2 + c3
+
+fastest growing term is n * c2 --> remove coefficient --> n
+
+T = O(n)
+
+def find_sum_2d(array_2d) {
+    total = 0 // O(1) //
+    for each row in array_2d{ 
+        for each i in row { 
+            total += i // O(1) (n^2 times) //
+        }
+    }
+    return total // O(1) //
+}
+ 
+T = T = O(1) + n^2 * O(1) + O(1)
+
