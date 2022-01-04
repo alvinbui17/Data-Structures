@@ -1,0 +1,13 @@
+Array - collection of items of a single type
+    - consecutive bytes
+
+`const a = 1`
+    - 32 bit representation in memory: 00000000000000000000000000000001
+
+memory - a long tape of bytes
+
+byte - small unit of data = 8 bits 
+    - 10010101
+    - ie. an integer is stored within 4 bytes
+
+

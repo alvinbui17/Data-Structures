@@ -44,5 +44,8 @@ def find_sum_2d(array_2d) {
     return total // O(1) //
 }
  
-T = T = O(1) + n^2 * O(1) + O(1)
+T = O(1) + n^2 * O(1) + O(1)
+
+T = O(n^2)
+
 

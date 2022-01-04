@@ -71,3 +71,22 @@ class Queue {
 
 // myQueue._print();
 // myQueue._clear();
+
+const isBalanced = (s) => {
+  let arr = s.split("");
+
+  while (arr.length > 1) {
+    if (
+      (arr[0] === "{" && arr[arr.length - 1 === "}"]) ||
+      (arr[0] === "[" && arr[arr.length - 1 === "]"]) ||
+      (arr[0] === "(" && arr[arr.length - 1] === ")")
+    ) {
+      arr.pop();
+      arr.shift();
+    }
+  }
+  console.log(arr);
+};
+
+let s = "{[()]}";
+isBalanced(s);

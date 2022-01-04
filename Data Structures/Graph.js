@@ -172,3 +172,58 @@ console.log(myGraph._BFS_Iterative("A"));
 // myGraph._printGraph();
 
 // console.log(myGraph._DFS_Iterative(1));
+
+function componentsInGraph(gb) {
+  let graphHash = (twod_array) => {
+    let newMap = new Map();
+    twod_array.forEach((array) => {
+      if (!newMap.get(array[0])) {
+        newMap.set(array[0], [array[1]]);
+      }
+      if (!newMap.get(array[1])) {
+        newMap.set(array[1], [array[0]]);
+      } else {
+        newMap.get(array[0]).push(array[1]);
+        newMap.get(array[1]).push(array[0]);
+      }
+    });
+    return newMap;
+  };
+
+  let graphHashMap = graphHash(gb);
+  let countArray = [];
+
+  for (const [key, value] of graphHashMap.entries()) {
+    console.log(key, value);
+    let count = [];
+    count.push(key);
+    count.push(...value);
+
+    let valuesOfVal = [];
+    value.forEach((val) => {
+      valuesOfVal.push(...graphHashMap.get(val));
+    });
+
+    valuesOfVal.forEach((val) => {
+      if (!count.includes(val)) {
+        count.push(val);
+      }
+    });
+    countArray.push(count.length);
+  }
+
+  let max = Math.max(...countArray);
+  let min = Math.min(...countArray);
+
+  return min, max;
+}
+
+let gb = [
+  [1, 6],
+  [2, 7],
+  [3, 8],
+  [4, 9],
+  [2, 6],
+];
+
+componentsInGraph(gb);
