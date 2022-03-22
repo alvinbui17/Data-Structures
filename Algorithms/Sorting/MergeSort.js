@@ -71,3 +71,5 @@ const merge = (inputArray, leftHalf, rightHalf) => {
 let array = [3, 4, 2, 1];
 
 mergeSort(array);
+
+

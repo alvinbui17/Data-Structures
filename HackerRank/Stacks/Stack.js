@@ -109,7 +109,7 @@ const largestAreaInHistogram = (arr) => {
   let stack = [];
 
   let popped;
-  let potentialMaxArea;
+  // let potentialMaxArea;
 
   // [index, height]
   stack.push([0, arr[0]]);
@@ -122,12 +122,11 @@ const largestAreaInHistogram = (arr) => {
       // pop the stack and calculate max areas until arr[i] is >= the top of stack
       while (stack.length && arr[i] < stack[stack.length - 1][1]) {
         popped = stack.pop();
-        console.log("popped", popped);
 
-        potentialMaxArea = popped[1] * (i - popped[0]);
-        if (potentialMaxArea > maxArea) {
-          maxArea = potentialMaxArea;
-        }
+        // potentialMaxArea = popped[1] * (i - popped[0]);
+
+        maxArea = Math.max(popped[1] * (i - popped[0]), maxArea);
+        console.log("popped:", popped, "maxArea:", maxArea);
       }
 
       stack.push([popped[0], arr[i]]);
@@ -138,11 +137,11 @@ const largestAreaInHistogram = (arr) => {
 
   while (stack.length) {
     popped = stack.pop();
-    potentialMaxArea = popped[1] * (arr.length - popped[0]);
 
-    if (potentialMaxArea > maxArea) {
-      maxArea = potentialMaxArea;
-    }
+    // potentialMaxArea = popped[1] * (arr.length - popped[0]);
+
+    maxArea = Math.max(popped[1] * (arr.length - popped[0]), maxArea);
+    console.log("cleaning up stack, popped:", popped, "maxArea:", maxArea);
   }
 
   console.log(stack, maxArea);

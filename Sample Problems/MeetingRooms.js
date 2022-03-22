@@ -51,6 +51,22 @@ let meetingRoomsII = (intervals) => {
   return max;
 };
 
+let meetingRoomsII_2 = (intervals) => {
+  let res = new Array(60);
+
+  for (let i = 0; i < 60; i++) {
+    res[i] = 0;
+  }
+
+  intervals.forEach((interval) => {
+    for (let i = interval[0]; i < interval[1]; i++) {
+      res[i]++;
+    }
+  });
+
+  return Math.max(...res);
+};
+
 let intervals = [
   [0, 30],
   [15, 20],
@@ -60,3 +76,5 @@ let intervals = [
 console.log(meetingRooms(intervals));
 
 console.log(meetingRoomsII(intervals));
+
+console.log(meetingRoomsII_2(intervals));

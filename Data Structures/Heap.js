@@ -115,7 +115,13 @@ class MinHeap {
     }
   }
 }
+let arr = [3, 2, 3, 1, 2, 4, 5, 5, 6];
 
+const minHeap = new MinHeap(4);
+
+for (let num of arr) {
+  minHeap._insertNode(num);
+}
 // const minHeap = new MinHeap();
 
 // minHeap._insertNode(42);
@@ -140,7 +146,10 @@ class MinHeap {
 // minHeap._insertNode(14);
 // minHeap._insertNode(14);
 
-// console.log(minHeap);
+while (minHeap.heap.length - 1 > 4) {
+  minHeap._remove();
+}
+console.log(minHeap.heap);
 
 // console.log(minHeap._getMin());
 // console.log(minHeap._getMax());

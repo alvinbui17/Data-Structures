@@ -18,7 +18,7 @@ var levelOrder = function (root) {
   let result = [];
   currentLevelNodes = [];
   if (root) currentLevelNodes.push(root);
-  while (currentLevelNodes.length > 0) {
+  while (currentLevelNodes.length) {
     current = [];
     let len = currentLevelNodes.length;
     for (let i = 0; i < len; i++) {
