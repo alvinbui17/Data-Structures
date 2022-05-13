@@ -8,16 +8,18 @@ const mergeSort = (inputArray) => {
 
   // recurse
   let midIndex = Math.floor(inputLength / 2);
-  let leftHalf = new Array(midIndex);
-  let rightHalf = new Array(inputLength - midIndex);
 
-  for (let i = 0; i < midIndex; i++) {
-    leftHalf[i] = inputArray[i];
-  }
+  // slice is not inclusive of top bound
+  let leftHalf = inputArray.slice(0, midIndex);
+  let rightHalf = inputArray.slice(midIndex, inputArray.length);
 
-  for (let i = midIndex; i < inputLength; i++) {
-    rightHalf[i - midIndex] = inputArray[i];
-  }
+  // for (let i = 0; i < midIndex; i++) {
+  //   leftHalf[i] = inputArray[i];
+  // }
+
+  // for (let i = midIndex; i < inputLength; i++) {
+  //   rightHalf[i - midIndex] = inputArray[i];
+  // }
 
   mergeSort(leftHalf);
 
@@ -27,7 +29,7 @@ const mergeSort = (inputArray) => {
 
   merge(inputArray, leftHalf, rightHalf);
 
-  console.log(inputArray);
+  // console.log(input/Array);
   return inputArray;
 };
 
@@ -70,6 +72,4 @@ const merge = (inputArray, leftHalf, rightHalf) => {
 
 let array = [3, 4, 2, 1];
 
-mergeSort(array);
-
-
+console.log(mergeSort(array));

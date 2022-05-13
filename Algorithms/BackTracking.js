@@ -1,3 +1,10 @@
+// for below function, we need to keep track of which chars have already been added to path because we
+// are trying to exhaust options from a single input
+
+// however for the phone number problem, we do not need to do this because each recursive call will be passed the 
+// letters associated with the NEXT phone number digit and we only press each number once so there is no need to keep
+// track of used chars
+
 function permutations(letters) {
   let res = [];
 

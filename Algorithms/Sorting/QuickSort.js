@@ -1,54 +1,45 @@
-// choose pivot
-// partition
-// recursively quicksort all elements to left/right of pivot
+// // choose pivot
+// // partition
+// // recursively quicksort all elements to left/right of pivot
 
-const quickSort = (
-  inputArray,
-  lowIndex = 0,
-  highIndex = inputArray.length - 1
-) => {
+const quickSort = (unsortedList, low = 0, high = unsortedList.length - 1) => {
   // walk left pointer from left until you find number > pivot
   // walk right pointer from right until you find number < pivot
   // then swap
   // when LP and RP are on same index, swap that index with pivot
 
   // if quickSort is called with array of size 1
-  if (lowIndex >= highIndex) {
-    return;
-  }
+  if (low >= high) return;
 
-  let pivot = inputArray[highIndex];
-  let leftPointer = lowIndex;
-  let rightPointer = highIndex;
+  let pivot = high;
+  let left = low;
+  let right = high;
 
-  while (leftPointer < rightPointer) {
-    while (inputArray[leftPointer] <= pivot && leftPointer < rightPointer) {
-      leftPointer++;
-    }
-    while (inputArray[rightPointer] >= pivot && leftPointer < rightPointer) {
-      rightPointer--;
-    }
-    [inputArray[leftPointer], inputArray[rightPointer]] = [
-      inputArray[rightPointer],
-      inputArray[leftPointer],
+  while (left < right) {
+    // walk from left to get first element greater than pivot
+    while (left < right && unsortedList[left] <= unsortedList[pivot]) left++;
+
+    // walk from right to get first element less than pivot
+    while (left < right && unsortedList[right] >= unsortedList[pivot]) right--;
+
+    // swap
+    [unsortedList[left], unsortedList[right]] = [
+      unsortedList[right],
+      unsortedList[left],
     ];
   }
 
-  // swap pivot with index where LP and RP meet
-  [inputArray[highIndex], inputArray[leftPointer]] = [
-    inputArray[leftPointer],
-    inputArray[highIndex],
+  // swap pivot with left pointer
+  [unsortedList[pivot], unsortedList[left]] = [
+    unsortedList[left],
+    unsortedList[pivot],
   ];
 
-  // recursively quickSort
+  // recurse on sections left and right of pivot
+  quickSort(unsortedList, low, left - 1);
+  quickSort(unsortedList, left + 1, high);
 
-  // left
-  quickSort(inputArray, lowIndex, leftPointer - 1);
-  //right
-  quickSort(inputArray, leftPointer + 1, highIndex);
-
-  //   console.log(inputArray);
-  return inputArray;
+  return unsortedList;
 };
 
 let array = [1, 6, 5, 4, 2];
